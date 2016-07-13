@@ -8,7 +8,7 @@ var self = this;
     <?js } ?>
 
     <h4 class="name" id="<?js= id ?>"><?js= (kind === 'class' ? 'new ' : '') +
-    name + (data.signature || '') ?></h4>
+    name + (data.signature || '') ?><a href="#<?js= id ?>">⚓</a></h4>
 
     <?js if (data.summary) { ?>
     <p class="summary"><?js= summary ?></p>
