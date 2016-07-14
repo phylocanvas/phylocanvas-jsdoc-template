@@ -21,6 +21,7 @@
     props.hasAttributes = false;
     props.hasDefault = false;
     props.hasName = false;
+    props.hasDescription = false;
 
     props.forEach(function(prop) {
         if (!prop) { return; }
@@ -35,6 +36,11 @@
 
         if (typeof prop.defaultvalue !== 'undefined' && !data.isEnum) {
             props.hasDefault = true;
+        }
+
+        if (prop.description) {
+            console.log(prop.description);
+            props.hasDescription = true;
         }
     });
 ?>
@@ -56,7 +62,9 @@
         <th>Default</th>
         <?js } ?>
 
+        <?js if (props.hasDescription) {?>
         <th class="last">Description</th>
+        <?js } ?>
     </tr>
     </thead>
 
@@ -98,9 +106,13 @@
                 </td>
             <?js } ?>
 
-            <td class="description last"><?js= prop.description ?><?js if (prop.subprops) { ?>
-                <h6>Properties</h6><?js= self.partial('properties.tmpl', prop) ?>
-            <?js } ?></td>
+            <?js if (props.hasDescription) {?>
+                <td class="description last">
+                <?js= prop.description ?><?js if (prop.subprops) { ?>
+                    <h6>Properties</h6><?js= self.partial('properties.tmpl', prop) ?>
+                <?js } ?>
+                </td>
+            <?js } ?>
         </tr>
 
     <?js }); ?>

@@ -32,6 +32,7 @@
     params.hasAttributes = false;
     params.hasDefault = false;
     params.hasName = false;
+    params.hasDescription = false;
 
     params.forEach(function(param) {
         if (!param) { return; }
@@ -46,6 +47,11 @@
 
         if (typeof param.defaultvalue !== 'undefined') {
             params.hasDefault = true;
+        }
+
+        if (param.description) {
+            console.log(param.description);
+            params.hasDescription = true;
         }
     });
 ?>
@@ -67,7 +73,9 @@
         <th>Default</th>
         <?js } ?>
 
+        <?js if (params.hasDescription) {?>
         <th class="last">Description</th>
+        <?js } ?>
     </tr>
     </thead>
 
@@ -113,10 +121,14 @@
                 </td>
             <?js } ?>
 
-            <td class="description last"><?js= param.description ?><?js if (param.subparams) { ?>
-                <h6>Properties</h6>
-                <?js= self.partial('params.tmpl', param.subparams) ?>
-            <?js } ?></td>
+            <?js if (params.hasDescription) {?>
+                <td class="description last">
+                <?js= param.description ?><?js if (param.subparams) { ?>
+                    <h6>Properties</h6>
+                    <?js= self.partial('params.tmpl', param.subparams) ?>
+                <?js } ?>
+                </td>
+            <?js } ?>
         </tr>
 
     <?js }); ?>
