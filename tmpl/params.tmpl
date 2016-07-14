@@ -49,7 +49,7 @@
             params.hasDefault = true;
         }
 
-        if (param.description) {
+        if (param.description || param.subparams) {
             params.hasDescription = true;
         }
     });

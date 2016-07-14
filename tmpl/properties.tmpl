@@ -38,7 +38,7 @@
             props.hasDefault = true;
         }
 
-        if (prop.description) {
+        if (prop.description || prop.subprops) {
             props.hasDescription = true;
         }
     });
