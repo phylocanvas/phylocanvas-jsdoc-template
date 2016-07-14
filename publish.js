@@ -410,14 +410,14 @@ exports.publish = function(taffyData, opts, tutorials) {
     helper.setTutorials(tutorials);
 
     data = helper.prune(data);
-    // data.sort('longname, version, since');
-    data.sort('meta.lineno');
+    data.sort('longname, version, since');
+    // data.sort('meta.lineno');
     helper.addEventListeners(data);
 
     var sourceFiles = {};
     var sourceFilePaths = [];
     data().each(function(doclet) {
-         doclet.attribs = '';
+        doclet.attribs = '';
 
         if (doclet.examples) {
             doclet.examples = doclet.examples.map(function(example) {
