@@ -1,6 +1,6 @@
 {
   "name": "phylocanvas-jsdoc-template",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The default template for JSDoc 3 uses: [the Taffy Database library](http://taffydb.com/) and the [Underscore Template library](http://documentcloud.github.com/underscore/#template).",
   "main": "publish.js",
   "scripts": {
