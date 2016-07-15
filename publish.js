@@ -389,6 +389,8 @@ exports.publish = function(taffyData, opts, tutorials) {
     var conf = env.conf.templates || {};
     conf.default = conf.default || {};
 
+    conf.default.includeDate = false;
+
     var templatePath = path.normalize(opts.template);
     view = new template.Template( path.join(templatePath, 'tmpl') );
 
@@ -503,7 +505,10 @@ exports.publish = function(taffyData, opts, tutorials) {
         sourceFiles = shortenPaths( sourceFiles, path.commonPrefix(sourceFilePaths) );
     }
     data().each(function(doclet) {
-        var url = helper.createLink(doclet);
+        var url =
+          doclet.longname === 'module:Phylocanvas' ?
+            indexUrl :
+            helper.createLink(doclet);
         helper.registerLink(doclet.longname, url);
 
         // add a shortened version of the full path
